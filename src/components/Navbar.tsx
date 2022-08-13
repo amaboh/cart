@@ -56,9 +56,9 @@ export function Navbar() {
               justifyContent="center"
               alignItems="center"
               borderRadius="4rem"
-              bg='red'
+              bg="red"
               fontSize={"0.8rem"}
-              transform='translate(25%,25%)'
+              transform="translate(25%,25%)"
             >
               4
             </Box>
