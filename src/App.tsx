@@ -9,7 +9,7 @@ function App() {
   return (
     <>
     <Navbar/>
-    <Box mb="4">
+    <Box mb="4" bgColor="gray.50">
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/store" element={<Store />} />
