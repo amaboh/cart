@@ -7,6 +7,7 @@ import { Navbar } from "./components/Navbar";
 
 function App() {
   return (
+
     <>
     <Navbar/>
     <Box mb="4" bgColor="gray.50">
@@ -19,6 +20,10 @@ function App() {
     </>
     
   );
+
 }
 
+
 export default App;
+
+
