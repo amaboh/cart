@@ -1,4 +1,5 @@
 import { Box, Button, HStack, Image, Stack, Text } from "@chakra-ui/react";
+import { useShoppingCart } from "../context/ShoppingCartContext";
 import { formatCurrency } from "../utils/formatCurrency";
 
 type storeProp = {
@@ -9,7 +10,14 @@ type storeProp = {
 };
 
 export function Storevalue({ id, name, price, imgUrl }: storeProp) {
-  const quantitiy: number = 1;
+  const {
+    getItemQuantity,
+    increaseCartQuantity,
+    decreaseCartQuantity,
+    removeFromCart,
+  } = useShoppingCart();
+
+  const quantity = getItemQuantity(id);
 
   return (
     <Stack
@@ -38,8 +46,12 @@ export function Storevalue({ id, name, price, imgUrl }: storeProp) {
           </Text>
         </HStack>
         <Box mt="auto">
-          {quantitiy === 0 ? (
-            <Button w="100%" colorScheme="blue">
+          {quantity === 0 ? (
+            <Button
+              w="100%"
+              colorScheme="blue"
+              onClick={() => increaseCartQuantity(id)}
+            >
               + Add to Cart
             </Button>
           ) : (
@@ -55,15 +67,32 @@ export function Storevalue({ id, name, price, imgUrl }: storeProp) {
                 alignItems="baseline"
                 justifyContent="center"
                 spacing="0.5rem"
-                mb='6'
+                mb="6"
               >
-                <Button colorScheme="blue">-</Button>
+                <Button
+                  colorScheme="blue"
+                  onClick={() => decreaseCartQuantity(id)}
+                >
+                  -
+                </Button>
                 <Text px="2">
-                  <span style={{fontSize:'1.4rem'}}>{quantitiy}</span> in Cart
+                  <span style={{ fontSize: "1.4rem" }}>{quantity}</span> in Cart
                 </Text>
-                <Button colorScheme="blue">+</Button>
+                <Button
+                  colorScheme="blue"
+                  onClick={() => increaseCartQuantity(id)}
+                >
+                  +
+                </Button>
               </Stack>
-                <Button bgColor="red.500" color='white' size='md'>Remove</Button>
+              <Button
+                bgColor="red.500"
+                color="white"
+                size="md"
+                onClick={() => removeFromCart(id)}
+              >
+                Remove
+              </Button>
             </Box>
           )}
         </Box>

@@ -7,8 +7,10 @@ import {
   IconButton,
 } from "@chakra-ui/react";
 import { IoCartSharp } from "react-icons/io5";
+import { useShoppingCart } from "../context/ShoppingCartContext";
 
 export function Navbar() {
+  const {openCart, cartQuantity} = useShoppingCart()
   return (
     <Box boxShadow="lg" bg="white">
       <Breadcrumb
@@ -38,13 +40,14 @@ export function Navbar() {
               <BreadcrumbLink href="/about">About</BreadcrumbLink>
             </BreadcrumbItem>
           </Box>
-          <Stack pos="relative" h="3rm" w="2rem">
+          {cartQuantity > 0 &&(<Stack pos="relative" h="3rm" w="2rem">
             <IconButton
               variant="outline"
               colorScheme="teal"
               aria-label="Shopping cart"
               borderRadius="8rem"
               icon={<IoCartSharp />}
+              onClick={openCart}
             />
             <Box
               pos="absolute"
@@ -61,9 +64,9 @@ export function Navbar() {
               fontSize={"0.8rem"}
               transform="translate(25%,25%)"
             >
-              4
+              {cartQuantity}
             </Box>
-          </Stack>
+          </Stack>)}
         </HStack>
       </Breadcrumb>
     </Box>
