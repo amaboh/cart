@@ -35,6 +35,7 @@ export function Storevalue({ id, name, price, imgUrl }: storeProp) {
         w={["20rem", "42rem", "65rem"]}
         object-position="top"
         borderTopRadius="0.5rem"
+        
       />
       <Box display="flex" flexDir="column" px="5" pb="4">
         <HStack justifyContent="space-between" alignItems="baseline" mb="4">

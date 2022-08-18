@@ -7,27 +7,22 @@ import { Navbar } from "./components/Navbar";
 import { ShoppingCartProvider } from "./context/ShoppingCartContext";
 
 function App() {
-
   return (
-
     <>
-     <ShoppingCartProvider>
-    <Navbar/>
-    <Box mb="4" bgColor="gray.50">
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/store" element={<Store />} />
-        <Route path="/about" element={<About />} />
-      </Routes>
-    </Box>
-    </ShoppingCartProvider>
+    <div>
+      <ShoppingCartProvider>
+        <Navbar />
+        <Box mb="4" bgColor="gray.50">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/store" element={<Store />} />
+            <Route path="/about" element={<About />} />
+          </Routes>
+        </Box>
+      </ShoppingCartProvider>
+      </div>
     </>
-    
   );
-
 }
 
-
 export default App;
-
-
